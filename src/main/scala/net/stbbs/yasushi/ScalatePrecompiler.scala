@@ -3,7 +3,7 @@ package net.stbbs.yasushi
 import java.io.File
 import org.slf4j.LoggerFactory
 import org.fusesource.scalate.{TemplateSource, Binding, TemplateEngine}
-import org.fusesource.scalate.servlet.ServletRenderContext
+import org.fusesource.scalate.DefaultRenderContext
 import org.fusesource.scalate.support.FileResourceLoader
 import org.fusesource.scalate.util.IOUtil
 
@@ -53,7 +53,7 @@ object ScalatePrecompiler {
   }
 
   def createBindings(): List[Binding] =
-    List(Binding("context", classOf[ServletRenderContext].getName, true, isImplicit = true))
+    List(Binding("context", classOf[DefaultRenderContext].getName, true, isImplicit = true))
   def createBindingsForPath(uri:String): List[Binding] = Nil
 
   def changed(template: File, source: File) =
